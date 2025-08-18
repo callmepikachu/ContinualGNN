@@ -101,7 +101,7 @@ def train_document(model, data_handler, args):
 
 def run(args):
     # Data loader
-    data = DocREDDataHandler()
+    data = DocREDDataHandler(use_bert=args.use_bert)
     data.load(args.data, 'train_annotated.json')
     
     # For now, just process one document
@@ -139,7 +139,7 @@ def evaluate(args):
     """Evaluate model on DocRED dataset"""
     try:
         # Load model
-        data = DocREDDataHandler()
+        data = DocREDDataHandler(use_bert=args.use_bert)
         data.load(args.data, 'dev.json')  # Use dev set for evaluation
         
         # Model parameter

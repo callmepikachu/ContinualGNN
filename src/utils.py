@@ -32,6 +32,9 @@ def parse_argument():
     parser.add_argument('--ewc_type', type = str, default = 'ewc')  # 'l2' / 'ewc'
 
     parser.add_argument('--eval', action = 'store_true')
+    
+    # DocRED specific options
+    parser.add_argument('--use_bert', action = 'store_true', help = 'Use BERT embeddings for entities')
 
     args = parser.parse_args()
 
