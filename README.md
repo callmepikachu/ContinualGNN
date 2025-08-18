@@ -22,7 +22,11 @@ python main_stream.py --data=cora
 
 * ContinualGNN for DocRED relation extraction:
 ```
-python main_docred.py --data docred --num_epochs 100 --learning_rate 0.01 --cuda
+# Without BERT embeddings (faster)
+python main_docred.py --data docred --num_epochs 100 --learning_rate 0.01
+
+# With BERT embeddings (more accurate)
+python main_docred.py --data docred --num_epochs 100 --learning_rate 0.01 --use_bert
 ```
 
 If using cuda, set `--cuda`.
