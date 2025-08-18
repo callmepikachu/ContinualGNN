@@ -1,1 +1,10 @@
-python main_stream.py --data=cora --new_ratio=0.8 --memory_size=250 --ewc_lambda=80.0 
+#!/bin/bash
+
+# For Cora dataset (original)
+# python main_sage.py --data cora --num_epochs 100 --learning_rate 0.1
+
+# For streaming Cora dataset (original)
+# python main_stream.py --data cora --num_epochs 100 --learning_rate 0.1 --memory_size 100 --ewc_lambda 0.1
+
+# For DocRED dataset (new)
+python main_docred.py --data docred --num_epochs 100 --learning_rate 0.01

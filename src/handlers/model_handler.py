@@ -1,26 +1,19 @@
 import os
-import sys
-import logging
-
 import torch
 
 class ModelHandler(object):
 
-    def __init__(self, path):
-        super(ModelHandler, self).__init__()
-        self.path = path
-    
-    def not_exist(self):
-        not_exist = not os.path.exists(self.path)
-        if not_exist:
-            logging.debug('Init model not exist!')
-        return not_exist 
+	def __init__(self, save_path):
+		super(ModelHandler, self).__init__()
+		self.save_path = save_path
+		if not os.path.exists(self.save_path):
+			os.makedirs(self.save_path)
 
-    def load(self, model_name):
-        model_dict = torch.load(os.path.join(self.path, model_name))
-        return model_dict 
+	def save(self, model, name):
+		torch.save(model, os.path.join(self.save_path, name))
 
-    def save(self, model_dict, model_name):
-        if not os.path.exists(self.path):
-            os.makedirs(self.path)
-        torch.save(model_dict, os.path.join(self.path, model_name))
+	def load(self, name):
+		return torch.load(os.path.join(self.save_path, name))
+
+	def not_exist(self):
+		return not os.path.exists(self.save_path)
